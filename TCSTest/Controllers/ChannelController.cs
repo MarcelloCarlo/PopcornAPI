@@ -32,7 +32,7 @@ namespace TCSTest.Controllers
             catch (System.Exception ex)
             {
                 _logger.LogError(ex, "Error occurred while fetching channels");
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -55,8 +55,8 @@ namespace TCSTest.Controllers
             }
             catch (System.Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while fetching channel with ID {ChannelId}", id);
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
+                _logger.LogError(ex, $"Error occurred while fetching channel with ID {id}");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -75,8 +75,8 @@ namespace TCSTest.Controllers
             }
             catch (System.Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while adding channel");
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
+                _logger.LogError(ex, $"Error occurred while adding channel");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -101,8 +101,8 @@ namespace TCSTest.Controllers
             }
             catch (System.Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while updating channel with ID {ChannelId}", id);
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
+                _logger.LogError(ex, $"Error occurred while updating channel with ID {id}");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -121,8 +121,8 @@ namespace TCSTest.Controllers
             }
             catch (System.Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while deleting channel with ID {ChannelId}", id);
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
+                _logger.LogError(ex, $"Error occurred while deleting channel with ID {id}");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
 

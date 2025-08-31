@@ -31,8 +31,8 @@ namespace TCSTest.Controllers
             }
             catch (System.Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while fetching schedules.");
-                return StatusCode(500, "Internal server error");
+                _logger.LogError(ex, $"Error occurred while fetching schedules.");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -55,8 +55,8 @@ namespace TCSTest.Controllers
             }
             catch (System.Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while fetching schedule.");
-                return StatusCode(500, "Internal server error");
+                _logger.LogError(ex, $"Error occurred while fetching schedule.");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -74,8 +74,8 @@ namespace TCSTest.Controllers
             }
             catch (System.Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while fetching current schedules.");
-                return StatusCode(500, "Internal server error");
+                _logger.LogError(ex, $"Error occurred while fetching current schedules.");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -94,8 +94,8 @@ namespace TCSTest.Controllers
             }
             catch (System.Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while adding schedule.");
-                return StatusCode(500, "Internal server error");
+                _logger.LogError(ex, $"Error occurred while adding schedule.");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -116,8 +116,8 @@ namespace TCSTest.Controllers
             }
             catch (System.Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while updating schedule.");
-                return StatusCode(500, "Internal server error");
+                _logger.LogError(ex, $"Error occurred while updating schedule.");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -137,8 +137,8 @@ namespace TCSTest.Controllers
             }
             catch (System.Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while deleting schedule.");
-                return StatusCode(500, "Internal server error");
+                _logger.LogError(ex, $"Error occurred while deleting schedule.");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
     }
