@@ -49,7 +49,7 @@ namespace TCSTest.Controllers
                 var content = await _contentService.GetContentByIdAsync(id);
                 if (content == null)
                 {
-                    return NotFound();
+                    return NotFound("Content not found");
                 }
                 return Ok(content);
             }
@@ -93,7 +93,7 @@ namespace TCSTest.Controllers
             {
                 if (id != content.ContentId)
                 {
-                    return BadRequest();
+                    return BadRequest("Content ID mismatch");
                 }
                 var result = await _contentService.UpdateContentAsync(content);
                 return Ok(result);

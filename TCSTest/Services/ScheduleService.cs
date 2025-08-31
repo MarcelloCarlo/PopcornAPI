@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using TCSTest.DTOs;
 using TCSTest.Models;
 using TCSTest.Repositories.Interfaces;
@@ -14,10 +16,11 @@ namespace TCSTest.Services
             _scheduleRepository = scheduleRepository;
         }
 
-        public async Task<IQueryable<ScheduleDTO>> GetAllSchedulesAsync(CancellationToken cancellationToken)
+        public async Task<List<ScheduleDTO>> GetAllSchedulesAsync(CancellationToken cancellationToken)
         {
             var schedules = await _scheduleRepository.GetAllSchedulesAsync(cancellationToken);
-            return schedules.Select(s => new ScheduleDTO
+
+            return schedules.Where(s => s.Channel != null && s.Content != null && s.ChannelId == s.Channel.ChannelId && s.ContentId == s.Content.ContentId).Select(s => new ScheduleDTO
             {
                 ChannelId = s.ChannelId,
                 ContentId = s.ContentId,
@@ -43,7 +46,7 @@ namespace TCSTest.Services
                     Season = s.Content.Season,
                     Episode = s.Content.Episode
                 }
-            }).AsQueryable();
+            }).ToList();
         }
 
         public async Task<ScheduleDTO?> GetScheduleByChannelIdAsync(Guid channelId, CancellationToken cancellationToken)

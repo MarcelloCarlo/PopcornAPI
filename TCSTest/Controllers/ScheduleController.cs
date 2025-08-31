@@ -49,7 +49,7 @@ namespace TCSTest.Controllers
                 var schedule = await _scheduleService.GetScheduleByChannelIdAsync(channelId);
                 if (schedule == null)
                 {
-                    return NotFound();
+                    return NotFound("Schedule not found");
                 }
                 return Ok(schedule);
             }
