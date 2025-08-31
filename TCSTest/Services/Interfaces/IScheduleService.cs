@@ -9,7 +9,7 @@ namespace TCSTest.Services.Interfaces
         /// </summary>
         /// <param name="cancellationToken">A cancellation token.</param>
         /// <returns>A list of schedules.</returns>
-        Task<IQueryable<ScheduleDTO>> GetAllSchedulesAsync(CancellationToken cancellationToken = default);
+        Task<List<ScheduleDTO>> GetAllSchedulesAsync(CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Gets a schedule by channel ID.

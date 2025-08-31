@@ -13,7 +13,7 @@ namespace TCSTest.Repositories
             _context = context;
         }
 
-        public async Task<IQueryable<Schedule>> GetAllSchedulesAsync(CancellationToken cancellationToken)
+        public async Task<List<Schedule>> GetAllSchedulesAsync(CancellationToken cancellationToken)
         {
             var schedules = await _context.ParseAsync<Schedule>(cancellationToken);
             var channels = await _context.ParseAsync<Channel>(cancellationToken);
@@ -24,7 +24,7 @@ namespace TCSTest.Repositories
                 s.Channel = channels.FirstOrDefault(c => c.ChannelId == s.ChannelId);
                 s.Content = contents.FirstOrDefault(c => c.ContentId == s.ContentId);
                 return s;
-            }).AsQueryable();
+            }).ToList();
 
             return fullSchedules;
         }
