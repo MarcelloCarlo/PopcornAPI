@@ -116,10 +116,7 @@ namespace TCSTest.Services
 
         public async Task<ScheduleDTO> AddScheduleAsync(ScheduleDTO schedule, CancellationToken cancellationToken)
         {
-            if (schedule.AirTime < schedule.EndTime)
-            {
-                throw new ArgumentException("AirTime must be before EndTime");
-            }
+            ValidateAirTimeEndTime(schedule);
 
             var newSchedule = new Schedule
             {
@@ -142,10 +139,7 @@ namespace TCSTest.Services
 
         public async Task<ScheduleDTO> UpdateScheduleAsync(ScheduleDTO schedule, CancellationToken cancellationToken)
         {
-            if (schedule.AirTime < schedule.EndTime)
-            {
-                throw new ArgumentException("AirTime must be before EndTime");
-            }
+            ValidateAirTimeEndTime(schedule);
 
             var updatedSchedule = new Schedule
             {
@@ -177,6 +171,24 @@ namespace TCSTest.Services
                 AirTime = deletedSchedule.AirTime,
                 EndTime = deletedSchedule.EndTime
             };
+        }
+
+        /// <summary>
+        /// Validates the AirTime and EndTime properties of a ScheduleDTO.
+        /// </summary>
+        /// <param name="schedule">Schedule to validate.</param>
+        /// <exception cref="ArgumentException">Air/End time error result.</exception>
+        private void ValidateAirTimeEndTime(ScheduleDTO schedule)
+        {
+            if (schedule.AirTime >= schedule.EndTime)
+            {
+                throw new ArgumentException("AirTime must be earlier than EndTime.");
+            }
+
+            if ((schedule.EndTime - schedule.AirTime).TotalMinutes < 1)
+            {
+                throw new ArgumentException("Schedule duration must be at least 1 minute.");
+            }
         }
     }
 }

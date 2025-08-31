@@ -31,8 +31,8 @@ namespace TCSTest.Controllers
             }
             catch (System.Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while fetching contents");
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
+                _logger.LogError(ex, $"Error occurred while fetching contents");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -55,8 +55,8 @@ namespace TCSTest.Controllers
             }
             catch (System.Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while fetching content with ID {ContentId}", id);
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
+                _logger.LogError(ex, $"Error occurred while fetching content with ID {id}");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -75,8 +75,8 @@ namespace TCSTest.Controllers
             }
             catch (System.Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while adding content");
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
+                _logger.LogError(ex, $"Error occurred while adding content");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -100,8 +100,8 @@ namespace TCSTest.Controllers
             }
             catch (System.Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while updating content with ID {ContentId}", id);
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
+                _logger.LogError(ex, $"Error occurred while updating content with ID {id}");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
 
@@ -120,8 +120,8 @@ namespace TCSTest.Controllers
             }
             catch (System.Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while deleting content with ID {ContentId}", id);
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
+                _logger.LogError(ex, $"Error occurred while deleting content with ID {id}");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
         }
 
