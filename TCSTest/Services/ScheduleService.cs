@@ -83,8 +83,11 @@ namespace TCSTest.Services
 
         public async Task<List<ScheduleDTO>> GetCurrentScheduleAsync(CancellationToken cancellationToken)
         {
+            var now = DateTime.Now;
             var schedules = await _scheduleRepository.GetAllSchedulesAsync(cancellationToken);
-            return schedules.Where(s => s.AirTime.Date <= DateTime.UtcNow.Date && s.EndTime.Date >= DateTime.UtcNow.Date).Select(s => new ScheduleDTO
+            return schedules
+            .Where(s => s.AirTime <= now && s.EndTime >= now)
+            .Select(s => new ScheduleDTO
             {
                 ChannelId = s.ChannelId,
                 ContentId = s.ContentId,
