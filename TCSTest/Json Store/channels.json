@@ -1,12 +1,5 @@
 [
     {
-        "channelId": "d8878cfd-326d-4337-802b-25ae59b78538",
-        "name": "Sky News Australia Australia",
-        "category": "News",
-        "language": "Tamil",
-        "region": "Australia"
-    },
-    {
         "channelId": "675ce652-b3fe-4b4a-aba2-bb65cea8e4c2",
         "name": "Nickelodeon",
         "category": "Kids",
@@ -693,10 +686,17 @@
         "region": "Australia"
     },
     {
-        "channelId": "65d8849e-4f77-4a87-a130-39e95df737a7",
-        "name": "FX HD",
-        "category": "TV Shows",
-        "language": "Malayalam",
-        "region": "USA"
+        "channelId": "d8878cfd-326d-4337-802b-25ae59b78538",
+        "name": "Sky News Philippines",
+        "category": "News",
+        "language": "Hiligaynon",
+        "region": "Philippines"
+    },
+    {
+        "channelId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "name": "Tinapa TV",
+        "category": "Food And History",
+        "language": "Filipino/Tagalog",
+        "region": "Philippines"
     }
 ]
